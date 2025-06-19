@@ -1,9 +1,3 @@
-# Clone repo kosong anda
-git clone https://github.com/mirasidi/pesanan-cinta.git
-cd pesanan-cinta
-
-# Add fail index.html
-cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -107,12 +101,13 @@ cat > index.html << 'EOF'
       const mesejDiv = document.getElementById("mesej");
 
       if (nama) {
-        mesejDiv.innerHTML = \`Hi \${nama}, I Love U ❤️<br>Selamat bekerja dan semoga harimu indah ❤️\`;
+        mesejDiv.innerHTML = `Hi ${nama}, I Love U ❤️<br>Selamat bekerja dan semoga harimu indah ❤️`;
       } else {
         mesejDiv.textContent = "Anda belum masukkan nama!";
       }
     }
 
+    // Floating hearts
     for (let i = 0; i < 20; i++) {
       const heart = document.createElement('div');
       heart.classList.add('heart');
@@ -125,8 +120,3 @@ cat > index.html << 'EOF'
 
 </body>
 </html>
-EOF
-
-git add index.html
-git commit -m "Tambah index.html pesanan cinta"
-git push origin main
