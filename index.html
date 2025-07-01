@@ -1,50 +1,79 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pesanan Cinta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesanan Cinta Emoji Sendiri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-
     body {
-      font-family: 'Dancing Script', cursive;
-      background: linear-gradient(to top right, #9F2B68, #f2c600);
-      background-size: cover;         /* Isi penuh skrin */
-      background-position: center;    /* Tengah */
-      background-repeat: no-repeat;   /* Tak ulang */
-      height: 100vh;                  /* Tinggi penuh viewport */
       margin: 0;
-      text-align: center;
-      padding: 50px 20px;
-      margin: 0;
+      font-family: 'Parisienne', cursive;
+      background: linear-gradient(to top right, #fff5e6, #ffd6e6);
+      height: 100vh;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: relative;
     }
 
+    .header-img {
+      max-width: 90%;
+      width: 400px;
+      margin-top: 20px;
+      animation: fadeInHeader 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInHeader {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.4);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(255, 204, 229, 0.5);
+      text-align: center;
+      margin-top: 20px;
+    }
+
     h2 {
-      font-size: 1.8em;
+      font-size: 2.5em;
+      color: #ff66b2;
       margin-bottom: 20px;
     }
 
     input, button {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.2em;
+      font-size: 1.3em;
       padding: 12px 20px;
-      margin: 10px auto;
       border-radius: 12px;
-      border: 1px solid #ff21cf;
-      background-color: #812682;
+      border: none;
+      margin: 10px auto;
       width: 80%;
       max-width: 300px;
       display: block;
+      text-align: center;
+    }
+
+    input {
+      background-color: #fffaf0;
+      color: #cc3366;
+      box-shadow: inset 0 0 5px #ffd9ec;
     }
 
     button {
-      background-color: #ffb3d9;
+      background: linear-gradient(to right, #ffeb99, #ffcce6);
+      color: #b30059;
+      font-weight: bold;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: 0.3s ease;
     }
 
     button:hover {
@@ -52,34 +81,28 @@
     }
 
     .message {
-      margin-top: 30px;
-      font-size: 1.8em;
-      color: #e60073;
-      animation: fadeIn 1s ease-in-out, floatText 3s infinite alternate;
-      line-height: 1.5em;
+      font-size: 2em;
+      color: #cc0066;
+      margin-top: 25px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; }
     }
 
-    @keyframes floatText {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    .heart {
+    .emoji-img {
       position: absolute;
-      color: #ff4d88;
-      font-size: 1.5em;
-      animation: float 8s infinite;
+      width: 30px;
+      height: 30px;
+      animation: floatEmoji 10s linear infinite;
       pointer-events: none;
     }
 
-    @keyframes float {
+    @keyframes floatEmoji {
       0% {
-        transform: translateY(100vh) scale(0.5);
+        transform: translateY(100vh) scale(0.7);
         opacity: 0;
       }
       50% {
@@ -89,39 +112,53 @@
         transform: translateY(-10vh) scale(1.2);
         opacity: 0;
       }
-    }
+  
+ }
   </style>
 </head>
 <body>
 
-  <h2>Masukkan Nama Anda</h2>
-  <input type="text" id="nama" placeholder="Contoh: Mira Rasidi" />
-  <button onclick="tunjukMesej()">Hantar</button>
+  <!-- HEADER IMAGE -->
+  <img src="https://i.postimg.cc/xTX29BPg/Welcome-Google-Classroom-Header-in-Colorful-Doodle-Style.png" alt="Welcome Header" class="header-img" />
 
-  <div class="message" id="mesej"></div>
+  <div class="container">
+    <h2>Masukkan Nama Anda<img src="https://i.postimg.cc/J0jDdKhW/Untitled-design.gif" alt="" width="50" height="50"></h2>
+    <input type="text" id="nama" placeholder="Contoh: Mira" />
+    <button onclick="tunjukMesej()">Lihat Pesanan</button>
+    <div class="message" id="mesej"></div>
+  </div>
 
   <script>
     function tunjukMesej() {
       const nama = document.getElementById("nama").value.trim();
-      const mesejDiv = document.getElementById("mesej");
-
+      const mesej = document.getElementById("mesej");
       if (nama) {
-        mesejDiv.innerHTML = `Hi ${nama}, I Love U ❤️<br>Happy selalu . Akak sayang awak. ❤️`;
+        mesej.innerHTML = `Hi ${nama}! Awak sangat istimewa 💖`;
+        mesej.style.animation = "fadeIn 1.5s ease forwards";
       } else {
-        mesejDiv.textContent = "Anda belum masukkan nama!";
+        mesej.textContent = "Masukkan nama dulu ya 🌸";
+        mesej.style.animation = "fadeIn 1s ease forwards";
       }
     }
 
-    // Floating hearts
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.innerHTML = '❤️';
-      document.body.appendChild(heart);
-    }
-  </script>
+    // Emoji terapung dengan imej sendiri
+    const emojiURLs = [
+      "https://i.postimg.cc/B6hnVHqv/1.png", // heart
+      "https://i.postimg.cc/65FyKrC2/5.png", // star
+      "https://i.postimg.cc/N0DsKm2x/4.png"  // flower
+    ];
 
+    for (let i = 0; i < 25; i++) {
+      const img = document.createElement('img');
+      img.src = emojiURLs[Math.floor(Math.random() * emojiURLs.length)];
+      img.classList.add('emoji-img');
+      img.style.left = Math.random() * 100 + 'vw';
+      img.style.animationDelay = Math.random() * 8 + 's';
+      document.body.appendChild(img);
+    }
+
+
+  </script>
+  
 </body>
 </html>
